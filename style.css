@@ -1,0 +1,76 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #333;
+}
+
+/* Container Grid */
+
+.containerGrid{
+    width: 80%;
+    max-width: 1100px;
+    height: auto;
+    background-color: crimson;
+    justify-content: center;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    flex-shrink: 0;
+    width: 250px;
+    height: 250px;
+    background-color: darkgoldenrod;
+    flex-shrink: none;
+    margin: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card h1{
+    align-self: flex-start;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.id{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 0 25px;
+}
+.id p{
+    font-size: 20px;
+}
+
+.sprite{
+    align-self: center;
+    width: 150px;
+    height: 150px;
+    background-color: darkorange;
+}
+.type{
+ 
+    background-color: darkred;
+    align-self: center;
+    width: 80%;
+    margin-top: 10px; 
+    display: flex;
+    justify-content: space-around;
+}
