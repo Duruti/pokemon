@@ -8,9 +8,14 @@ li{
     margin: 0;
     padding: 0;
 }
+p{
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Container Grid */
@@ -19,7 +24,7 @@ body {
     width: 80%;
     max-width: 1100px;
     height: auto;
-    background-color: crimson;
+    background-color: rgb(148, 145, 146);
     justify-content: center;
     margin: 20px auto;
     display: flex;
@@ -29,7 +34,7 @@ body {
     flex-shrink: 0;
     width: 250px;
     height: 250px;
-    background-color: darkgoldenrod;
+    /* background-color: darkgoldenrod; */
     flex-shrink: none;
     margin: 10px;
     padding-bottom: 10px;
@@ -37,23 +42,30 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
 }
 .card h1{
     align-self: flex-start;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 400;
 }
 .id{
+    box-sizing: initial;
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 50px;
-    background-color: darkgreen;
+    right: 0px;
+    top: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(209, 209, 209);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0 0 0 25px;
+    border-radius: 0 0 0 999px;
+    border-left: solid 10px  rgb(209, 209, 209);
+    border-bottom: solid 10px  rgb(209, 209, 209);
 }
 .id p{
     font-size: 20px;
@@ -63,14 +75,21 @@ body {
     align-self: center;
     width: 150px;
     height: 150px;
-    background-color: darkorange;
+    /* background-color: darkorange; */
 }
 .type{
- 
-    background-color: darkred;
+
+    background-color: rgb(177, 177, 177);
     align-self: center;
     width: 80%;
-    margin-top: 10px; 
+    /* height: 50px; */
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+}
+.type p{
+    align-self: center;
+    padding: 2px;
 }
