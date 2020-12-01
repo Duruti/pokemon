@@ -3,8 +3,10 @@
 // Element du DOM
 let ul = document.querySelector('.containerGrid')
 let searchInput = document.querySelector('#searchInput')
+let search = document.querySelector('#search')
 let wait = document.querySelector('.wait')
-
+let logo = document.querySelector('.logo')
+let label = document.querySelector('label')
 
 let allPokemon = [];
 let pokemons = [];
@@ -68,10 +70,20 @@ const searchPokemon = function(e){
 searchInput.addEventListener('keyup',searchPokemon);
 searchInput.addEventListener('focus',() =>{
    inputFocus = true
+   if (document.documentElement.offsetWidth > 1050) return
+   logo.style.display = "none"
+   label.style.display = "none"
+   search.style.marginTop = "10px"
+   console.log(document.documentElement.offsetWidth)
 });
 searchInput.addEventListener('blur',(e) =>{
    inputFocus = false
    searchInput.value =""
+   logo.style.display = "block"
+   label.style.display = "block"
+   if (document.documentElement.offsetWidth<= 1050){
+      search.style.marginTop = "15vw"
+   }else search.style.marginTop = "40px"
    drawCard();
 
 });
