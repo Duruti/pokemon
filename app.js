@@ -26,6 +26,7 @@ const color = {
 
 
 getPokemon(251);
+
 window.addEventListener('scroll', () => {
    if (inputFocus) return;
    const {scrollTop,scrollHeight,clientHeight} = document.documentElement;

@@ -34,9 +34,20 @@ body {
     left: 50%;
     transform: translate(-50%);
     display: flex;
-    justify-content: space-around;
-    width: 150px;
+    flex-direction: column;
+    justify-content:center;
+    /* width: 150px; */
     height: 15px;
+}
+.cir{
+    display: flex;
+    justify-content:space-around;
+}
+.wait h1{
+    margin-top: 20px;
+    /* font-size: 4.5vw; */
+    color: #f1f1f1;
+    text-align: center;
 }
 .circle{
     margin-top: 0px;
@@ -199,4 +210,8 @@ body {
         100%{
             transform: translateY(-10vw);
         }
+    }
+    .wait h1{
+        font-size: 4.5vw;
+    }
 }
