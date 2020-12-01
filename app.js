@@ -170,7 +170,7 @@ let createElementCard = function(o){
     //  let type = document.createElement('p');
       let type = document.createElement('img')
     //type.innerText = o.types[i]
-    type.src = `/ressources/${o.types[i]}.png`// o.types[i]
+    type.src = `ressources/${o.types[i]}.png`// 
     types.appendChild(type);
       
    }
