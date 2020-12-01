@@ -1,8 +1,13 @@
+// https://pokeapi.co/
+
 // Element du DOM
 let ul = document.querySelector('.containerGrid')
+let searchInput = document.querySelector('#searchInput')
 
 let allPokemon = [];
-
+let pokemons = [];
+let index = 10
+let inputFocus = false
 const color = {
    red : '#F58271',
    blue : '#6390F0',
@@ -17,23 +22,77 @@ const color = {
    
 }
 
-getPokemon();
+getPokemon(151);
+window.addEventListener('scroll', () => {
+   if (inputFocus) return;
+   const {scrollTop,scrollHeight,clientHeight} = document.documentElement;
+   if ((Math.trunc(scrollHeight-scrollTop)-(clientHeight+100)) <= 0 ){
+      console.log('en bas ' + index )
+      index = index + 4
+      drawCard()
+   }
+})
+const searchPokemon = function(e){
+  // getPokemon(151)
+  e.preventDefault();
+  console.log(e)
+   const input = searchInput.value.toUpperCase()
+  // ul = document.querySelector('.containerGrid')
+   let result = []
+//   let pokemons = document.querySelectorAll('li')
+   for(i=0; i<allPokemon.length ; i++){
+      let name = allPokemon[i].name.toUpperCase();
+      
+      if (name.indexOf(input)> -1) {
+         console.log(name);
+         result.push(allPokemon[i])
+         //  pokemons[i].style.display = 'flex'
+      }
+      else {
+        // pokemons[i].style.display = 'none'
+      }
+   }
+   ul.innerHTML = ""
+   for (let i=0; i<result.length ;i++){
+      createElementCard(result[i])
+    //  console.log(i)
+   }
+   console.log('-------');
 
+}
 
-async function getPokemon(){
-   
-   let result =  await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
+searchInput.addEventListener('keyup',searchPokemon);
+searchInput.addEventListener('focus',() =>{
+   inputFocus = true
+});
+searchInput.addEventListener('blur',(e) =>{
+   inputFocus = false
+   searchInput.value =""
+   drawCard();
+
+});
+async function getPokemon(nbSearch){
+   allPokemon = [];
+   ul.innerHTML =""
+   let result =  await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${nbSearch}`)
    .then(json => json.json())
    .then(data => {
       data.results.forEach(element => {
-         getStat(element.url)
+         getStat(element.url,nbSearch)
       });
-    
    })
+  
+}
+let drawCard = function(){
+   pokemons = allPokemon.slice(0,index)
+   ul.innerHTML = ""
+
+   for (let i=0; i<pokemons.length ;i++){
+      createElementCard(pokemons[i])
+   }
 }
 
-
-async function getStat(url){
+async function getStat(url,nbSearch){
    // recupère les stat du pokemon
    let result =  await fetch(url)
       .then(json => json.json())
@@ -50,7 +109,10 @@ async function getStat(url){
    result.types.forEach(e => o.types.push(e.type.name));
 
    // récupère les spécifications
-   let species = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${o.name}`).then(p => p.json()).then(data =>data)
+   let species = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${o.id}`)
+   .then(p => p.json())
+   .then(data =>data)
+   .catch(()=>console.log('name : '+o.name + ' id ' + o.id))
 
    let language = "fr"
    let frenchName = species.names.filter( array => array.language.name === language)
@@ -59,11 +121,14 @@ async function getStat(url){
    allPokemon.push(o);
    
    // Affiche si tout les pokemons ont été traité
-
-   if (allPokemon.length === 151){
-      let b= allPokemon.sort( (a,b) => {return a.id - b.id})
-      for (let i=0; i<b.length ;i++){
-         createElementCard(b[i])
+   if (allPokemon.length === nbSearch){
+      allPokemon = allPokemon.sort( (a,b) => {return a.id - b.id})
+      pokemons = allPokemon.slice(0,10)
+      console.log(allPokemon.length)
+      
+      for (let i=0; i<pokemons.length ;i++){
+         createElementCard(pokemons[i])
+       //  console.log(i)
       }
    }
 }
