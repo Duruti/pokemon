@@ -21,7 +21,8 @@ body {
 /* Form  */
 .logo{
     display: block;
-    margin: 20px auto;
+    margin: 20px auto 40px;
+
     width: 25%;
 }
 
@@ -65,26 +66,26 @@ body {
 #search{
     position: relative;
     width: 40%;
-    margin: 30px auto;
-    margin-top: 100px;
+    margin: 40px auto;
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
-    font-size: 30px;
 }
 #search label{
+    font-size: 20px;
     position: absolute;
     padding-left: 10px;
-    top: 7px;
+    top: 10px;
     transition: color 0.5s ease-out , top 0.5s ease-out;
 }
 #search:focus-within label{
-    top: -50px;
+    top: -25px;
     color: #f1f1f1;
 }
 
 #searchInput{
     width: 100%;
-    font-size: 30px;
+    font-size: 20px;
     padding: 10px;
     outline: none;
     border-radius: 5px;
@@ -94,8 +95,8 @@ body {
 /* Container Grid */
 
 .containerGrid{
-    width: 80%;
-    max-width: 1300px;
+    width: 90%;
+    max-width: 1500px;
     height: auto;
     /* background-color: rgb(148, 145, 146); */
     justify-content: center;
@@ -171,6 +172,9 @@ body {
     #search{
         margin-top: 20vw;
         width: 80%;
+        font-size: 4.5vw;
+    }
+    #search label{
         font-size: 4.5vw;
     }
     #searchInput{
