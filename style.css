@@ -19,6 +19,48 @@ body {
 }
 
 /* Form  */
+.logo{
+    display: block;
+    margin: 20px auto;
+    width: 25%;
+}
+
+/*  wait  */
+
+.wait{
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+    height: 15px;
+}
+.circle{
+    margin-top: 0px;
+    width: 30px;
+    height: 30px;
+    background-color: #f1f1f1;
+    border-radius: 999px;
+    animation: anim 0.7s ease-in-out infinite alternate;
+}
+@keyframes anim{
+    100%{
+        transform: translateY(-50px);
+    }
+}
+.circle:nth-child(1){
+    animation-delay: 0.2s;
+}
+.circle:nth-child(2){
+    animation-delay: 0.3s;
+}
+.circle:nth-child(3){
+    animation-delay: 0.4s;
+}
+
+/* Input */
 
 #search{
     position: relative;
@@ -55,7 +97,7 @@ body {
     width: 80%;
     max-width: 1300px;
     height: auto;
-    background-color: rgb(148, 145, 146);
+    /* background-color: rgb(148, 145, 146); */
     justify-content: center;
     margin: 20px auto;
     display: flex;
@@ -110,9 +152,9 @@ body {
 }
 .type{
 
-    background-color: rgb(177, 177, 177);
+    /* background-color: rgb(177, 177, 177); */
     align-self: center;
-    width: 80%;
+    width: 90%;
     /* height: 50px; */
     margin-top: 10px;
     display: flex;
@@ -123,4 +165,34 @@ body {
 .type p{
     align-self: center;
     padding: 2px;
+}
+
+@media screen and (max-width :1050px){
+    #search{
+        margin-top: 20vw;
+        width: 80%;
+        font-size: 4.5vw;
+    }
+    #searchInput{
+        font-size: 4.5vw;
+    }
+    #search:focus-within label{
+        top: -10vw;
+        color: #f1f1f1;
+    }
+    .circle{
+        width: 4vw;
+        height: 4vw;
+    }
+    .wait{
+        top : 45vw;
+        width: 20vw;
+    }
+    .logo{
+        width: 60vw;
+    }
+    @keyframes anim{
+        100%{
+            transform: translateY(-10vw);
+        }
 }

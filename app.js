@@ -3,6 +3,8 @@
 // Element du DOM
 let ul = document.querySelector('.containerGrid')
 let searchInput = document.querySelector('#searchInput')
+let wait = document.querySelector('.wait')
+
 
 let allPokemon = [];
 let pokemons = [];
@@ -13,7 +15,7 @@ const color = {
    blue : '#6390F0',
    yellow : '#F7D02C',
    green : '#78c850',
-   black : '#000',
+   black : '#101010',
    brown : '#E2BF65',
    purple : '#7151c2',
    gray : '#D9D5D8',
@@ -22,7 +24,8 @@ const color = {
    
 }
 
-getPokemon(151);
+
+getPokemon(251);
 window.addEventListener('scroll', () => {
    if (inputFocus) return;
    const {scrollTop,scrollHeight,clientHeight} = document.documentElement;
@@ -125,7 +128,7 @@ async function getStat(url,nbSearch){
       allPokemon = allPokemon.sort( (a,b) => {return a.id - b.id})
       pokemons = allPokemon.slice(0,10)
       console.log(allPokemon.length)
-      
+      wait.style.display ='none'
       for (let i=0; i<pokemons.length ;i++){
          createElementCard(pokemons[i])
        //  console.log(i)
@@ -142,6 +145,7 @@ let createElementCard = function(o){
    // nom du pokemon
    let name = document.createElement('h1')
    name.innerText = o.name
+   if (o.color === 'black') name.style.color = '#f1f1f1'
    card.appendChild(name)
    
    // id
@@ -163,9 +167,11 @@ let createElementCard = function(o){
    let types = document.createElement('div');
    types.classList.add('type');
    for (let i=0 ; i<o.types.length ; i++){
-      let type = document.createElement('p');
-      type.innerText = o.types[i]
-      types.appendChild(type);
+    //  let type = document.createElement('p');
+      let type = document.createElement('img')
+    //type.innerText = o.types[i]
+    type.src = `/ressources/${o.types[i]}.png`// o.types[i]
+    types.appendChild(type);
       
    }
    card.appendChild(types)
@@ -174,3 +180,4 @@ let createElementCard = function(o){
    ul.appendChild(card)
 
 }
+
